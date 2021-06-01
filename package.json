@@ -1,0 +1,24 @@
+{
+  "name": "@adobecom/blocks",
+  "version": "0.0.1",
+  "description": "A collection of tools to work with adobe.com blocks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/auniverseaway/blocks.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/auniverseaway/blocks/issues"
+  },
+  "homepage": "https://github.com/auniverseaway/blocks#readme",
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4"
+  }
+}

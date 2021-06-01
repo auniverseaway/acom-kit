@@ -1,0 +1,21 @@
+{
+    "extends": "airbnb-base",
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    },
+    "globals": {
+        "document": true,
+        "window": true,
+        "Element": true,
+        "fetch": true,
+        "HTMLElement": true,
+        "HTMLDocument": true,
+        "IntersectionObserver": true,
+        "MutationObserver": true
+    },
+    "rules": {
+        "indent": ["error", 4]
+    }
+}
