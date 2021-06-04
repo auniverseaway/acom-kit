@@ -1,6 +1,14 @@
 # Phantom
 Phantom is a research project for HTML, JS, and CSS.
 
+## Versions
+
+### 0.0.1
+Initial lazy loaded block loader
+
+### 1.0.0
+Added block class cleaning, made eager the default.
+
 ## About
 This project aims to solve several problems when dealing with HTML, JS, and CSS. It is hyper focused on speed and simplicity.
 
@@ -62,11 +70,11 @@ const config = {
 ```
 
 ##### Advanced
-The following adds the ability to eager load, spec a margin around the viewport, and have dependencies.
+The following adds the ability to lazy load, spec a margin around the viewport, and have dependencies.
 
 ```js
 const config = {
-    eager: true,
+    lazy: true,
     margin: '800px 0px',
     blocks: {
         'header': {

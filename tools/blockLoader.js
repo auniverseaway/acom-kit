@@ -1,10 +1,3 @@
-/**
- * Block Loader
- * Lazily load JS & CSS for a block when the element is in the viewport.
- *
- * @param {Object} config the loader config.
- * @param {HTMLElement} suppliedEl the parent element to load blocks into.
- */
 const blockLoader = (config, suppliedEl) => {
     const parentEl = suppliedEl || document;
 
@@ -92,24 +85,39 @@ const blockLoader = (config, suppliedEl) => {
     };
 
     /**
-     * Lazily load blocks using an Intersection Observer.
+     * Load blocks
      * @param {HTMLElement} element
      */
     const init = (element) => {
         const isDoc = element instanceof HTMLDocument;
         const parent = isDoc ? document.querySelector('body') : element;
 
-        const options = { rootMargin: config.margin || '1000px 0px' };
-        const observer = new IntersectionObserver(onIntersection, options);
+        let observer;
+        if (isDoc && config.lazy) {
+            const options = { rootMargin: config.margin || '1000px 0px' };
+            observer = new IntersectionObserver(onIntersection, options);
+        }
+
+        // Clean up variant classes
+        // Assumption: "Marquee (Small, Contained) turns into marquee--small--contained-"
+        const variantBlocks = parent.querySelectorAll('[class$="-"]');
+        variantBlocks.forEach((variant) => {
+            let { className } = variant;
+            className = className.slice(0, -1);
+            // eslint-disable-next-line no-param-reassign
+            variant.className = '';
+            const classNames = className.split('--');
+            variant.classList.add(...classNames);
+        });
 
         Object.keys(config.blocks).forEach((selector) => {
             const elements = parent.querySelectorAll(selector);
             elements.forEach((el) => {
                 el.setAttribute('data-block-select', selector);
-                if (!isDoc || config.eager) {
-                    loadElement(el);
-                } else {
+                if (isDoc && config.lazy) {
                     observer.observe(el);
+                } else {
+                    loadElement(el);
                 }
             });
         });

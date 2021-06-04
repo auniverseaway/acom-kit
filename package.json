@@ -1,6 +1,6 @@
 {
   "name": "@adobecom/blocks",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A collection of tools to work with adobe.com blocks.",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/auniverseaway/blocks#readme",
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/eslint-parser": "^7.14.4",
     "eslint": "^7.27.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4"
