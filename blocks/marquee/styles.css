@@ -16,9 +16,11 @@
     bottom: 0;
 }
 
-.marquee .container {
-    max-width: 83.4%;
-    margin: 0 auto;
+@media screen and (min-width: 1440px) {
+    .marquee .container {
+        max-width: 83.4%;
+        margin: 0 auto;
+    }
 }
 
 .marquee .container {
@@ -40,6 +42,8 @@
     font-size: var(--type-detail-m-size);
     text-transform: var(--type-detail-m-transform);
     line-height: var(--type-detail-m-transform);
+    font-weight: var(--type-detail-all-weight);
+    margin: 0;
 }
 
 .marquee .container .image {

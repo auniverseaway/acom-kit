@@ -1,18 +1,20 @@
 :root {
+    --type-detail-all-weight: 700;
+
     --type-detail-m-size: 12px;
     --type-detail-m-lh: 15px;
     --type-detail-m-transform: uppercase;
 
-    --type-detail-l-size: 16px;
-    --type-detail-l-lh: 15px;
-    --type-detail-l-transform: uppercase;
-
-    --type-detail-xl-size: 20px;
-    --type-detail-xl-lh: 15px;
-    --type-detail-xltransform: uppercase;
-
     --grid-mobile-container-width: 83.4%;
     --grid-desktop-container-width: 1200px;
+
+    --query-mobile-max: 599px;
+    --query-tablet-portrait-min: 600px;
+    --query-tablet-portrait-max: 899px;
+    --query-tablet-landscape-min: 900px;
+    --query-tablet-landscape-max: 1199px;
+    --query-desktop-min: 1200px;
+    --query-desktop-max: 1440px;
 }
 
 body {

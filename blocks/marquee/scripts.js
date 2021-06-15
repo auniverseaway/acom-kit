@@ -8,9 +8,7 @@ const init = (element) => {
         element.style.background = bgColor;
     }
     const content = element.querySelector(':scope > div:last-of-type');
-    if (element.classList.contains('contained')) {
-        content.classList.add('container');
-    }
+    content.classList.add('container');
     content.querySelector(':scope > div:first-of-type').classList.add('text');
     content.querySelector(':scope > div:last-of-type').classList.add('image');
 };
