@@ -17,6 +17,7 @@
         "MutationObserver": true
     },
     "rules": {
-        "indent": ["error", 4]
+        "indent": ["error", 4],
+        "import/extensions": false
     }
 }

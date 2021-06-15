@@ -1,4 +1,4 @@
-import blockLoader from './tools/blockLoader';
+import blockLoader from './tools/blockLoader.js';
 
 const config = {
     blocks: {

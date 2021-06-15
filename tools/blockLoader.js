@@ -10,14 +10,17 @@ const blockLoader = (config, suppliedEl) => {
 
     const initJs = async (element, block) => {
         // If the block scripts haven't been loaded, load them.
-        if (!block.module) {
-            // eslint-disable-next-line no-param-reassign
-            block.module = await import(`${block.location}${block.scripts}`);
+        if (block.scripts) {
+            if (!block.module) {
+                // eslint-disable-next-line no-param-reassign
+                block.module = await import(`${block.location}${block.scripts}`);
+            }
+            // If this block type has scripts and they're already imported
+            if (block.module) {
+                block.module.default(element);
+            }
         }
-        // If this block type has scripts and they're already imported
-        if (block.module) {
-            block.module.default(element);
-        }
+        return true;
     };
 
     /**
@@ -28,15 +31,11 @@ const blockLoader = (config, suppliedEl) => {
         const { blockSelect } = element.dataset;
         const block = config.blocks[blockSelect];
 
-        if (!block.loaded && block.styles) {
+        if (!block.loaded) {
             addStyle(`${block.location}${block.styles}`);
         }
 
-        if (block.scripts) {
-            await initJs(element, block);
-        }
-
-        block.loaded = true;
+        block.loaded = initJs(element, block);
     };
 
     /**
@@ -60,14 +59,13 @@ const blockLoader = (config, suppliedEl) => {
      */
     const cleanVariations = (parent) => {
         const variantBlocks = parent.querySelectorAll('[class$="-"]');
-        return variantBlocks.map((variant) => {
+        variantBlocks.forEach((variant) => {
             let { className } = variant;
             className = className.slice(0, -1);
             // eslint-disable-next-line no-param-reassign
             variant.className = '';
             const classNames = className.split('--');
             variant.classList.add(...classNames);
-            return variant;
         });
     };
 

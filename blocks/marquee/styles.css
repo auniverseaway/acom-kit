@@ -1,14 +1,14 @@
-.marquee--small--contained- {
+.marquee {
     position: relative;
 }
 
-.marquee--small--contained- > div:first-of-type img {
+.marquee .background img {
     object-fit: cover;
     height: 100%;
     width: 100%;
 }
 
-.marquee--small--contained- > div:first-of-type > div {
+.marquee .background {
     position: absolute;
     left: 0;
     right: 0;
@@ -16,30 +16,35 @@
     bottom: 0;
 }
 
-.marquee--small--contained- > div:last-of-type {
+.marquee .container {
     max-width: 83.4%;
     margin: 0 auto;
+}
+
+.marquee .container {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     height: 360px;
-    gap: 48px;
 }
 
-.marquee--small--contained- > div:last-of-type > div {
-    flex: 1 1 50%;
-    display: flex;
-}
-
-.marquee--small--contained- > div:last-of-type > div picture img {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-}
-
-.marquee--small--contained- > div:last-of-type > div:first-of-type {
+.marquee .container .text {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
+    width: 40%;
+}
+
+.marquee .container .image {
+    text-align: right;
+}
+
+.marquee .container div {
+    flex: 1 1 auto;
+}
+
+.marquee .container img {
+    object-fit: contain;
+    height: 100%;
 }

@@ -1,0 +1,16 @@
+:root {
+    --type-detail-m-size: 12px;
+    --type-detail-m-lh: 15px;
+    --type-detail-m-transform: uppercase;
+
+    --type-detail-l-size: 16px;
+    --type-detail-l-lh: 15px;
+    --type-detail-l-transform: uppercase;
+
+    --type-detail-xl-size: 20px;
+    --type-detail-xl-lh: 15px;
+    --type-detail-xltransform: uppercase;
+
+    --grid-mobile-container-width: 83.4%;
+    --grid-desktop-container-width: 1200px;
+}
