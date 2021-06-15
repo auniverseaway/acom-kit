@@ -53,6 +53,4 @@ main > div > h2 {
 /* Block pre-loads */
 div[class^='marquee'] {
     display: none;
-    opacity: 0;
-    transition: opacity .2s;
 }
