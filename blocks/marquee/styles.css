@@ -36,6 +36,12 @@
     width: 40%;
 }
 
+.marquee .container .text p:first-of-type {
+    font-size: var(--type-detail-m-size);
+    text-transform: var(--type-detail-m-transform);
+    line-height: var(--type-detail-m-transform);
+}
+
 .marquee .container .image {
     text-align: right;
 }
