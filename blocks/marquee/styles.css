@@ -1,6 +1,6 @@
 .marquee {
     position: relative;
-    padding: var(--spacing-mobile) 0 var(--spacing-mobile) 0;
+    padding: var(--spacing-mobile) 0 var(--spacing-l) 0;
 }
 
 .marquee.is-Loaded {
@@ -45,19 +45,23 @@
     text-transform: var(--type-detail-m-transform);
     line-height: var(--type-detail-m-lh);
     font-weight: var(--type-detail-all-weight);
-    margin: 0;
+    margin: 0 0 var(--spacing-s) 0;
 }
 
 .marquee .container .text h1 {
     font-size: var(--type-heading-xl-size);
     line-height: var(--type-heading-xl-lh);
     font-weight: var(--type-heading-all-weight);
-    margin: 0;
+    margin: 0 0 var(--spacing-s) 0;
 }
 
 .marquee .container .text h1 + p {
     font-size: var(--type-body-m-size);
     line-height: var(--type-body-m-lh);
+    margin: 0 0 var(--spacing-m) 0;
+}
+
+.marquee .container .text h1 + p + p {
     margin: 0;
 }
 

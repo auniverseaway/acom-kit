@@ -20,6 +20,7 @@ const blockLoader = (config, suppliedEl) => {
                 block.module.default(element);
             }
         }
+        element.classList.add('is-Loaded');
         return true;
     };
 
@@ -35,8 +36,7 @@ const blockLoader = (config, suppliedEl) => {
             addStyle(`${block.location}${block.styles}`);
         }
 
-        block.loaded = await initJs(element, block);
-        element.classList.add('is-Loaded');
+        block.loaded = initJs(element, block);
     };
 
     /**
