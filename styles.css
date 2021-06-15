@@ -20,14 +20,6 @@
     /* Grid */
     --grid-mobile-container-width: 83.4%;
     --grid-desktop-container-width: 1200px;
-
-    --query-mobile-max: 599px;
-    --query-tablet-portrait-min: 600px;
-    --query-tablet-portrait-max: 899px;
-    --query-tablet-landscape-min: 900px;
-    --query-tablet-landscape-max: 1199px;
-    --query-desktop-min: 1200px;
-    --query-desktop-max: 1440px;
 }
 
 body {
