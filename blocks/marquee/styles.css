@@ -85,7 +85,7 @@
     }
 
     .marquee .container {
-        height: 360px;
+        min-height: 360px;
         display: flex;
         justify-content: space-between;
         align-items: stretch;
