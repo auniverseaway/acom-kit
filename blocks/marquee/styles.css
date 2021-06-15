@@ -1,0 +1,45 @@
+.marquee--small--contained- {
+    position: relative;
+}
+
+.marquee--small--contained- > div:first-of-type img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.marquee--small--contained- > div:first-of-type > div {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.marquee--small--contained- > div:last-of-type {
+    max-width: 83.4%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 360px;
+    gap: 48px;
+}
+
+.marquee--small--contained- > div:last-of-type > div {
+    flex: 1 1 50%;
+    display: flex;
+}
+
+.marquee--small--contained- > div:last-of-type > div picture img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.marquee--small--contained- > div:last-of-type > div:first-of-type {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
