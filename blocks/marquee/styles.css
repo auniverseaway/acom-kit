@@ -1,5 +1,11 @@
 .marquee {
     position: relative;
+    padding: var(--spacing-mobile) 0 var(--spacing-mobile) 0;
+}
+
+.marquee.is-Loaded {
+    display: block;
+    opacity: 1;
 }
 
 .marquee .background img {
@@ -16,33 +22,43 @@
     bottom: 0;
 }
 
-@media screen and (min-width: 1440px) {
-    .marquee .container {
-        max-width: 83.4%;
-        margin: 0 auto;
-    }
+.marquee .container {
+    max-width: var(--grid-mobile-container-width);
+    margin: 0 auto;
 }
 
 .marquee .container {
     position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    height: 360px;
 }
 
 .marquee .container .text {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    width: 40%;
+}
+
+.marquee .container .text > * {
+    width: 100%;
 }
 
 .marquee .container .text p:first-of-type {
     font-size: var(--type-detail-m-size);
     text-transform: var(--type-detail-m-transform);
-    line-height: var(--type-detail-m-transform);
+    line-height: var(--type-detail-m-lh);
     font-weight: var(--type-detail-all-weight);
+    margin: 0;
+}
+
+.marquee .container .text h1 {
+    font-size: var(--type-heading-xl-size);
+    line-height: var(--type-heading-xl-lh);
+    font-weight: var(--type-heading-all-weight);
+    margin: 0;
+}
+
+.marquee .container .text h1 + p {
+    font-size: var(--type-body-m-size);
+    line-height: var(--type-body-m-lh);
     margin: 0;
 }
 
@@ -57,4 +73,37 @@
 .marquee .container img {
     object-fit: contain;
     height: 100%;
+    width: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+    .marquee {
+        padding: 0;
+    }
+
+    .marquee .container {
+        height: 360px;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .marquee .container .text,
+    .marquee .container .image {
+        flex: 0 1 auto;
+    }
+
+    .marquee .container .text {
+        width: 40%;
+    }
+
+    .marquee .container .image {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .marquee .container {
+        max-width: var(--grid-desktop-container-width);
+    }
 }

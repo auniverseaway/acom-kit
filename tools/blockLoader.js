@@ -35,7 +35,8 @@ const blockLoader = (config, suppliedEl) => {
             addStyle(`${block.location}${block.styles}`);
         }
 
-        block.loaded = initJs(element, block);
+        block.loaded = await initJs(element, block);
+        element.classList.add('is-Loaded');
     };
 
     /**
