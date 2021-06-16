@@ -1,6 +1,6 @@
 .marquee {
     position: relative;
-    padding: var(--spacing-mobile) 0 var(--spacing-l) 0;
+    padding: var(--spacing-l) 0 var(--spacing-l) 0;
 }
 
 .marquee.is-Loaded {
@@ -22,12 +22,9 @@
 }
 
 .marquee .container {
+    position: relative;
     max-width: var(--grid-mobile-container-width);
     margin: 0 auto;
-}
-
-.marquee .container {
-    position: relative;
 }
 
 .marquee .container .text {
