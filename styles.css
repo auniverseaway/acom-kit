@@ -8,6 +8,9 @@
 
     --type-heading-all-weight: 700;
 
+    --type-heading-xxl-size: 44px;
+    --type-heading-xxl-lh: 55px;
+    
     --type-heading-xl-size: 36px;
     --type-heading-xl-lh: 45px;
 
@@ -40,6 +43,10 @@ body {
 
 img {
     max-width: 100%;
+}
+
+code {
+    line-break: anywhere;
 }
 
 /* Themes */
