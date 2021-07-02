@@ -10,6 +10,16 @@ main {
     margin: 0 auto;
 }
 
+main > div:last-of-type {
+    border-top: 2px solid;
+    margin-top: 56px;
+    padding-top: 32px;
+    padding-bottom: 56px;
+    position: relative;
+    left: 0;
+    right: 0;
+}
+
 h1 + p picture {
     display: block;
     position: absolute;
