@@ -138,14 +138,15 @@ const loadBlocks = (config, suppliedEl) => {
     init(parentEl);
 };
 
-const loadTemplate = (config) => {
-    const template = getMetadata('template');
-    if (template) {
-        const tplConf = config.templates[template];
+const loadTheme = (config) => {
+    const theme = getMetadata('theme');
+    if (theme) {
+        const tplConf = config.themes[theme];
         if (tplConf) {
             addStyle(`${tplConf.location}${tplConf.styles}`);
         }
-        document.body.classList.add(`${template}--template`);
+        const cssClass = tplConf.class && `${theme}--theme`;
+        document.body.classList.add(cssClass);
     }
 }
 
@@ -161,13 +162,14 @@ const config = {
             scripts: 'gist.js',
         }
     },
-    templates: {
+    themes: {
         tutorial: {
-            location: '/templates/tutorial/',
+            class: 'tutorial--theme',
+            location: '/themes/tutorial/',
             styles: 'styles.css',
         }
     },
 };
 
-loadTemplate(config);
+loadTheme(config);
 loadBlocks(config);
