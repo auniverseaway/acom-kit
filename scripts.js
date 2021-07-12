@@ -1,7 +1,6 @@
 const getMetadata = (name) => {
-    const attr = name && name.includes(':') ? 'property' : 'name';
-    const $meta = document.head.querySelector(`meta[${attr}="${name}"]`);
-    return $meta && $meta.content;
+    const meta = document.head.querySelector(`meta[name="${name}"]`);
+    return meta && meta.content;
 };
 
 const addStyle = (location) => {
@@ -11,7 +10,7 @@ const addStyle = (location) => {
     document.querySelector('head').appendChild(element);
 };
 
-const blockLoader = (config, suppliedEl) => {
+const loadBlocks = (config, suppliedEl) => {
     const parentEl = suppliedEl || document;
 
     const initJs = async (element, block) => {
@@ -139,6 +138,17 @@ const blockLoader = (config, suppliedEl) => {
     init(parentEl);
 };
 
+const loadTemplate = (config) => {
+    const template = getMetadata('template');
+    if (template) {
+        const tplConf = config.templates[template];
+        if (tplConf) {
+            addStyle(`${tplConf.location}${tplConf.styles}`);
+        }
+        document.body.classList.add(`${template}--template`);
+    }
+}
+
 const config = {
     blocks: {
         '.marquee': {
@@ -159,15 +169,5 @@ const config = {
     },
 };
 
-blockLoader(config);
-
-(() => {
-    const template = getMetadata('template');
-    if (template) {
-        const tplConf = config.templates[template];
-        if (tplConf) {
-            addStyle(`${tplConf.location}${tplConf.styles}`);
-        }
-        document.body.classList.add(`${template}--template`);
-    }
-})();
+loadTemplate(config);
+loadBlocks(config);

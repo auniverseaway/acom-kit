@@ -1,4 +1,4 @@
-const jsonp = (url, callback) => {
+const jsonpGist = (url, callback) => {
     // Setup a unique name that cane be called & destroyed
     const callbackName = 'jsonp_' + Math.round(100000 * Math.random());
 
@@ -21,7 +21,7 @@ const gist = (element, utils) => {
     const { href } = element;
     const url = href.slice(-2) == 'js' ? `${href}on` : `${href}.json`;
 
-    jsonp(url, (data) => {
+    jsonpGist(url, (data) => {
         utils.addStyle(data.stylesheet);
         element.insertAdjacentHTML('afterend', data.div);
         element.remove();
