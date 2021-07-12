@@ -1,12 +1,17 @@
-const blockLoader = (config, suppliedEl) => {
-    const parentEl = suppliedEl || document;
+const getMetadata = (name) => {
+    const meta = document.head.querySelector(`meta[name="${name}"]`);
+    return meta && meta.content;
+};
 
-    const addStyle = (location) => {
-        const element = document.createElement('link');
-        element.setAttribute('rel', 'stylesheet');
-        element.setAttribute('href', location);
-        document.querySelector('head').appendChild(element);
-    };
+const addStyle = (location) => {
+    const element = document.createElement('link');
+    element.setAttribute('rel', 'stylesheet');
+    element.setAttribute('href', location);
+    document.querySelector('head').appendChild(element);
+};
+
+const loadBlocks = (config, suppliedEl) => {
+    const parentEl = suppliedEl || document;
 
     const initJs = async (element, block) => {
         // If the block scripts haven't been loaded, load them.
@@ -17,7 +22,7 @@ const blockLoader = (config, suppliedEl) => {
             }
             // If this block type has scripts and they're already imported
             if (block.module) {
-                block.module.default(element);
+                block.module.default(element, { addStyle });
             }
         }
         element.classList.add('is-Loaded');
@@ -32,7 +37,7 @@ const blockLoader = (config, suppliedEl) => {
         const { blockSelect } = element.dataset;
         const block = config.blocks[blockSelect];
 
-        if (!block.loaded) {
+        if (!block.loaded && block.styles) {
             addStyle(`${block.location}${block.styles}`);
         }
 
@@ -63,8 +68,7 @@ const blockLoader = (config, suppliedEl) => {
         variantBlocks.forEach((variant) => {
             let { className } = variant;
             className = className.slice(0, -1);
-            // eslint-disable-next-line no-param-reassign
-            variant.className = '';
+            variant.classList.remove(className);
             const classNames = className.split('--');
             variant.classList.add(...classNames);
         });
@@ -134,6 +138,17 @@ const blockLoader = (config, suppliedEl) => {
     init(parentEl);
 };
 
+const loadTemplate = (config) => {
+    const template = getMetadata('template');
+    if (template) {
+        const tplConf = config.templates[template];
+        if (tplConf) {
+            addStyle(`${tplConf.location}${tplConf.styles}`);
+        }
+        document.body.classList.add(`${template}--template`);
+    }
+}
+
 const config = {
     blocks: {
         '.marquee': {
@@ -141,7 +156,18 @@ const config = {
             styles: 'styles.css',
             scripts: 'scripts.js',
         },
+        'a[href^="https://gist.github.com"]': {
+            location: '/blocks/embed/',
+            scripts: 'gist.js',
+        }
+    },
+    templates: {
+        tutorial: {
+            location: '/templates/tutorial/',
+            styles: 'styles.css',
+        }
     },
 };
 
-blockLoader(config);
+loadTemplate(config);
+loadBlocks(config);
