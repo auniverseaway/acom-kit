@@ -5,10 +5,6 @@ body {
     line-height: 27px;
 }
 
-.tutorial--template {
-    opacity: 1;
-}
-
 main {
     max-width: var(--grid-mobile-container-width);
     margin: 0 auto;

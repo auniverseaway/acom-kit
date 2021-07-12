@@ -1,0 +1,21 @@
+/* Style Guide */
+main > div > :is(h1, h2, h3, h4, h5, h6) {
+    color: #212121;
+    max-width: var(--grid-mobile-container-width);
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 1440px) {
+    main > div > :is(h1, h2, h3, h4, h5, h6) {
+        max-width: var(--grid-desktop-container-width);
+    }
+}
+
+main > div > h1 {
+    border-bottom: 1px solid rgba(33,33,33,.15);
+    margin: 96px auto 0 auto;
+}
+
+main > div > h2 {
+    margin: 72px auto 24px auto;
+}

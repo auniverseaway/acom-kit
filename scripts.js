@@ -1,3 +1,29 @@
+const config = {
+    themes: {
+        tutorial: {
+            class: 'tutorial-theme',
+            location: '/themes/tutorial/',
+            styles: 'styles.css',
+        },
+        styleguide: {
+            class: 'styleguide-theme',
+            location: '/themes/styleguide/',
+            styles: 'styles.css',
+        },
+    },
+    blocks: {
+        '.marquee': {
+            location: '/blocks/marquee/',
+            styles: 'styles.css',
+            scripts: 'scripts.js',
+        },
+        'a[href^="https://gist.github.com"]': {
+            location: '/blocks/embed/',
+            scripts: 'gist.js',
+        }
+    },
+};
+
 const getMetadata = (name) => {
     const meta = document.head.querySelector(`meta[name="${name}"]`);
     return meta && meta.content;
@@ -8,6 +34,21 @@ const addStyle = (location) => {
     element.setAttribute('rel', 'stylesheet');
     element.setAttribute('href', location);
     document.querySelector('head').appendChild(element);
+};
+
+const loadTheme = (config) => {
+    const theme = getMetadata('theme');
+    const themeClasses = [ 'is-Loaded' ];
+    if (theme) {
+        const tplConf = config.themes[theme];
+        if (tplConf) {
+            addStyle(`${tplConf.location}${tplConf.styles}`);
+        }
+        if (tplConf && tplConf.class) {
+            themeClasses.push(tplConf.class);
+        }
+    }
+    document.body.classList.add(...themeClasses);
 };
 
 const loadBlocks = (config, suppliedEl) => {
@@ -136,39 +177,6 @@ const loadBlocks = (config, suppliedEl) => {
     };
 
     init(parentEl);
-};
-
-const loadTheme = (config) => {
-    const theme = getMetadata('theme');
-    if (theme) {
-        const tplConf = config.themes[theme];
-        if (tplConf) {
-            addStyle(`${tplConf.location}${tplConf.styles}`);
-        }
-        const cssClass = tplConf.class && `${theme}--theme`;
-        document.body.classList.add(cssClass);
-    }
-}
-
-const config = {
-    blocks: {
-        '.marquee': {
-            location: '/blocks/marquee/',
-            styles: 'styles.css',
-            scripts: 'scripts.js',
-        },
-        'a[href^="https://gist.github.com"]': {
-            location: '/blocks/embed/',
-            scripts: 'gist.js',
-        }
-    },
-    themes: {
-        tutorial: {
-            class: 'tutorial--theme',
-            location: '/themes/tutorial/',
-            styles: 'styles.css',
-        }
-    },
 };
 
 loadTheme(config);
