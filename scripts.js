@@ -29,26 +29,34 @@ const getMetadata = (name) => {
     return meta && meta.content;
 };
 
-const addStyle = (location) => {
+const addStyle = (location, loadEvent) => {
     const element = document.createElement('link');
     element.setAttribute('rel', 'stylesheet');
     element.setAttribute('href', location);
+    if (loadEvent) {
+        element.addEventListener('load', loadEvent);
+    }
     document.querySelector('head').appendChild(element);
 };
 
 const loadTheme = (config) => {
     const theme = getMetadata('theme');
-    const themeClasses = [ 'is-Loaded' ];
+    const isLoaded = () => {
+        document.body.classList.add('is-Loaded');
+    };
     if (theme) {
-        const tplConf = config.themes[theme];
-        if (tplConf) {
-            addStyle(`${tplConf.location}${tplConf.styles}`);
+        const themeConf = config.themes[theme] || {};
+        if (themeConf.class) {
+            document.body.classList.add(themeConf.class);
         }
-        if (tplConf && tplConf.class) {
-            themeClasses.push(tplConf.class);
+        if (themeConf.styles) {
+            addStyle(`${themeConf.location}${themeConf.styles}`, isLoaded);
+        } else {
+            isLoaded();
         }
+    } else {
+        isLoaded();
     }
-    document.body.classList.add(...themeClasses);
 };
 
 const loadBlocks = (config, suppliedEl) => {

@@ -43,7 +43,7 @@ body {
     font-family: adobe-clean, -apple-system, BlinkMacSystemFont, Segoe UI,Roboto, sans-serif;
 }
 
-body.is-Loaded {
+.is-Loaded {
     opacity: 1;
 }
 
