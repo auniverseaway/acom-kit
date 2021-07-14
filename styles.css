@@ -41,6 +41,8 @@ body {
     transition: opacity 0.2s;
     margin: 0;
     font-family: adobe-clean, -apple-system, BlinkMacSystemFont, Segoe UI,Roboto, sans-serif;
+    background-color: #000;
+    color: #FFF;
 }
 
 .is-Loaded {
