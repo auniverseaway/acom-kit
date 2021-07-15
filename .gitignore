@@ -107,3 +107,6 @@ dist
 
 # IDEs
 .vscode/
+
+# Helix stuff
+.hlx/
